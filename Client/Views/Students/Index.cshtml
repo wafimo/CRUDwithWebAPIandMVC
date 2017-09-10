@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <div align="center"><h1>Student List</h1></div>
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ActionLink("Add New Student", "Create",new {id=""} ,new {@class = "btn btn-primary"})
+            <br />
+            <br/>
+            <table class="table table-bordered table-responsive table-hover table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                @foreach (var student in ViewBag.listStudents)
+                {
+                    <tr>
+                        <td>@student.Id</td>
+                        <td>@student.Name</td>
+                        <td>@student.Email</td>
+                        <td><a href="@Url.Action("Edit", "Students", new {id = student.Id})">Edit</a>
+                             |
+                            <a onclick="return confirm('Are u sure??')" href="@Url.Action("Delete", "Students", new {id = student.Id})">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

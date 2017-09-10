@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model Client.ViewModels.StudentViewModels
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" align="center">
+                <h1>Student Entry</h1>
+                <br />
+                <br/>
+                    @using (Html.BeginForm("Create", "Students", FormMethod.Post))
+                    {
+                        <table cellpadding="2" cellspacing="2">
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student.Name)</td>
+                                <td>@Html.TextBoxFor(model => model.Student.Name)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.Student.Email)</td>
+                                <td>@Html.TextBoxFor(model => model.Student.Email)</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="submit" value="Save" class="btn btn-block btn-success" /></td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+        </div>
+    </div>
+</body>
+</html>
